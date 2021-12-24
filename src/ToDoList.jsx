@@ -2,7 +2,7 @@ import React from "react"
 
 const ToDoList = (props) => {
   return(
-    <ul className='flex flex-col gap-4'>
+    <ul className='w-full max-w-[24rem] flex flex-col items-center gap-4'>
       {props.children}
     </ul>
   )
