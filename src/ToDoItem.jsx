@@ -1,9 +1,9 @@
 import { BsCheckLg, BsThreeDots } from 'react-icons/bs';
 import React from 'react'
 
-const ToDoItem = ({props}) => {
+const ToDoItem = (props) => {
   return(
-    <li className={`max-w-[24rem] w-full min-h-[6rem] p-6 
+    <div className={`max-w-[24rem] w-full min-h-[6rem] p-6 
                    rounded-xl border-[1px] border-gray-100 
                    flex items-center 
                    shadow-lg relative
@@ -23,7 +23,7 @@ const ToDoItem = ({props}) => {
                       hover:cursor-pointer'>
         <BsThreeDots size='20'/>  
       </div>
-    </li>
+    </div>
   )
 }
 
