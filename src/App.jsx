@@ -4,33 +4,39 @@ import ToDoSearch from './ToDoSearch'
 import ToDoList from './ToDoList'
 import CreateToDoButton from './CreateToDoButton'
 
-const defaultToDos = [
-  { id:'1', text:'Do something', completed:true},
-  { id:'2', text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias perspiciatis sunt incidunt eligendi vero nemo ut dignissimos commodi.', completed:true},
-  { id:'3', text:'Do something', completed:true},
-  { id:'4', text:'Do something', completed:false},
-  { id:'5', text:'Do something', completed:false},
-  { id:'6', text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias perspiciatis sunt incidunt eligendi vero nemo ut dignissimos commodi.', completed:false},
-  { id:'7', text:'Do something', completed:false},
-  { id:'8', text:'Do something', completed:false}
-]
+// const myToDos = [
+//   { id:'1', text:'Do something', completed:false},
+//   { id:'2', text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias perspiciatis sunt incidunt eligendi vero nemo ut dignissimos commodi.', completed:false},
+//   { id:'3', text:'Do something', completed:false},
+//   { id:'4', text:'Do something', completed:false},
+//   { id:'5', text:'Do something', completed:false},
+//   { id:'6', text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias perspiciatis sunt incidunt eligendi vero nemo ut dignissimos commodi.', completed:false},
+//   { id:'7', text:'Do something', completed:false},
+//   { id:'8', text:'Do something', completed:false}
+// ]
 
 function App() {
+  const defaultToDos = JSON.parse( localStorage.getItem('TODOS') || JSON.stringify([]) )
   const [searchValue, setSearchValue] = useState('')
   const [todos, setToDos] = useState(defaultToDos)
+
+  const saveToDos = (newToDos) => {
+    localStorage.setItem('TODOS', JSON.stringify(newToDos))
+    setToDos(newToDos)
+  }
 
   const switchToDoState = (id) => {
     const toDoIndex = todos.findIndex(todo => todo.id == id)
     const newToDos = [...todos]
     newToDos[toDoIndex].completed = !newToDos[toDoIndex].completed
-    setToDos(newToDos)
+    saveToDos(newToDos)
   }
 
   const deleteToDo = (id) => {
     const toDoIndex = todos.findIndex(todo => todo.id == id)
     const newToDos = [...todos]
     newToDos.splice(toDoIndex,1)
-    setToDos(newToDos)
+    saveToDos(newToDos)
   }
 
   return (

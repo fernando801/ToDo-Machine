@@ -6,13 +6,15 @@ const ToDoItem = (props) => {
     <div className={`max-w-[24rem] w-full min-h-[6rem] p-6 
                    rounded-xl border-[1px] border-gray-100 
                    flex items-center 
-                   shadow-lg relative
-                   transition-all ease-linear duration-100
+                   shadow-lg relative 
+                   transition-all ease-linear duration-200 
                    ${props.completed ? 'bg-gray-100': 'bg-white' }`}>
       <div className={`min-w-[2rem] h-8 
                       flex items-center justify-center 
                       hover:cursor-pointer
-                      hover:text-cyan-500
+                      sm:hover:text-cyan-500 
+                      active:text-cyan-500
+                      active:scale-90
                       ${props.completed ? 'text-cyan-500' : 'text-gray-400'}`}
                       onClick={()=>{props.switcher(props.id)}}>
         <BsCheckLg size='20'/>
