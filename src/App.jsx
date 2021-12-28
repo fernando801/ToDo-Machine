@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { ToDoProvider } from './ToDoContext'
 import ToDoCounter from './ToDoCounter'
 import ToDoSearch from './ToDoSearch'
 import ToDoList from './ToDoList'
@@ -16,37 +17,16 @@ import CreateToDoButton from './CreateToDoButton'
 // ]
 
 function App() {
-  const defaultToDos = JSON.parse( localStorage.getItem('TODOS') || JSON.stringify([]) )
-  const [searchValue, setSearchValue] = useState('')
-  const [todos, setToDos] = useState(defaultToDos)
-
-  const saveToDos = (newToDos) => {
-    localStorage.setItem('TODOS', JSON.stringify(newToDos))
-    setToDos(newToDos)
-  }
-
-  const switchToDoState = (id) => {
-    const toDoIndex = todos.findIndex(todo => todo.id == id)
-    const newToDos = [...todos]
-    newToDos[toDoIndex].completed = !newToDos[toDoIndex].completed
-    saveToDos(newToDos)
-  }
-
-  const deleteToDo = (id) => {
-    const toDoIndex = todos.findIndex(todo => todo.id == id)
-    const newToDos = [...todos]
-    newToDos.splice(toDoIndex,1)
-    saveToDos(newToDos)
-  }
-
   return (
-    <div className='w-full flex flex-col items-center gap-8 p-8 relative max-w-screen-md'>
-      <h1 className='font-bold text-4xl text-center'>ToDo Machine📝</h1>
-      <ToDoCounter toDosCount={todos.length} toDosCompleted={todos.filter(todo => (todo.completed)).length}/>
-      <ToDoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
-      <ToDoList switcher={switchToDoState} deleteToDo={deleteToDo} todos={todos.filter( todo => (todo.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())) )} />
-      <CreateToDoButton />
-    </div>
+    <ToDoProvider>
+      <div className='w-full flex flex-col items-center gap-8 p-8 relative max-w-screen-md'>
+        <h1 className='font-bold text-4xl text-center'>ToDo Machine📝</h1>
+        <ToDoCounter />
+        <ToDoSearch />
+        <ToDoList />
+        <CreateToDoButton />
+      </div>
+    </ToDoProvider>
   )
 }
 

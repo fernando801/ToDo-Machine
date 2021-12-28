@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { ToDoContext } from './ToDoContext'
 
 const ToDoCounter = (props) => {
-  return <h1 className='text-center text-lg'>You have completed {props.toDosCompleted} of {props.toDosCount} TODOs</h1>
+  const {todos} = useContext(ToDoContext) 
+  return <h1 className='text-center text-lg'>You have completed {todos.filter(todo => (todo.completed)).length} of {todos.length} TODOs</h1>
 }
 
 export default ToDoCounter
