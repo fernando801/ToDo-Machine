@@ -33,6 +33,7 @@ const CreateToDoForm = () => {
         </label>
         <textarea
           id='toDoText'
+          autoFocus='autofocus' 
           value={toDoValue}
           onChange={handleChange}
           rows='5'
