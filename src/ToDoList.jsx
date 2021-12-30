@@ -14,7 +14,7 @@ const ToDoList = (props) => {
       ?filteredToDos.length
         ?filteredToDos.map(todo => (<ToDoItem key={todo.id} {...todo} switcher={props.switcher} deleteToDo={props.deleteToDo}/>))
         :<p className='max-w-[24rem] w-full min-h-[6rem] p-6 flex justify-center items-center text-center text-gray-600 '>No matches found</p>
-      :<p className='max-w-[24rem] w-full min-h-[6rem] p-6 flex justify-center items-center text-center text-gray-600 '>You have no TODOs. Create a new one by clicking the + button</p>}
+      :<p className='max-w-[24rem] w-full min-h-[6rem] p-6 flex justify-center items-center text-center text-gray-600 '>You have no ToDos. Add a new one by clicking the + button</p>}
     </div>
   )
 }

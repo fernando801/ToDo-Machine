@@ -4,6 +4,8 @@ import ToDoCounter from './ToDoCounter'
 import ToDoSearch from './ToDoSearch'
 import ToDoList from './ToDoList'
 import CreateToDoButton from './CreateToDoButton'
+import Modal from './Modal'
+import AppUI from './AppUI'
 
 // const myToDos = [
 //   { id:'1', text:'Do something', completed:false},
@@ -19,13 +21,7 @@ import CreateToDoButton from './CreateToDoButton'
 function App() {
   return (
     <ToDoProvider>
-      <div className='w-full flex flex-col items-center gap-8 p-8 relative max-w-screen-md'>
-        <h1 className='font-bold text-4xl text-center'>ToDo Machine📝</h1>
-        <ToDoCounter />
-        <ToDoSearch />
-        <ToDoList />
-        <CreateToDoButton />
-      </div>
+      <AppUI />
     </ToDoProvider>
   )
 }

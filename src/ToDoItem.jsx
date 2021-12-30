@@ -7,9 +7,9 @@ const ToDoItem = (props) => {
 
   return(
     <div className={`max-w-[24rem] w-full min-h-[6rem] p-6 
-                   rounded-xl border-[1px] border-gray-100 
+                   rounded-xl 
                    flex items-center 
-                   shadow-lg relative 
+                   shadow-md relative 
                    transition-all ease-linear duration-200 
                    ${props.completed ? 'bg-gray-100': 'bg-white' }`}>
       <div className={`min-w-[2rem] h-8 
